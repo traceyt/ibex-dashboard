@@ -1,0 +1,6 @@
+# -p should be the port EXPOSE variable, app name should be a variable
+# can add a -f (force) to the rm to stop and remove
+docker stop `docker ps | ibex-dashboard-app | awk '{print $1}'`
+docker rm `docker ps -a | grep ibex-dashboard-app | awk '{print $1}'`
+docker build -t ibex-dashboard-i .
+docker run -p4000:4000 -d --name ibex-dashboard-app ibex-dashboard-i
